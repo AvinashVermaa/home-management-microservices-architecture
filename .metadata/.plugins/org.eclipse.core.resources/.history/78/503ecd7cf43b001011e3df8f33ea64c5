@@ -1,0 +1,31 @@
+package com.propertyservice.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.propertyservice.repository.AreaRepository;
+import com.propertyservice.repository.CityRepository;
+import com.propertyservice.repository.PropertyRepository;
+import com.propertyservice.repository.RoomRepository;
+import com.propertyservice.repository.StateRepository;
+
+@Service
+public class PropertyService {
+
+	@Autowired
+	private PropertyRepository propertyRepository;
+	
+	@Autowired
+	private AreaRepository areaRepository;
+	
+	@Autowired
+	private CityRepository cityRepository;
+	
+	@Autowired
+	private StateRepository stateRepository;
+	
+	@Autowired
+	private RoomRepository roomRepository;
+	
+	
+}

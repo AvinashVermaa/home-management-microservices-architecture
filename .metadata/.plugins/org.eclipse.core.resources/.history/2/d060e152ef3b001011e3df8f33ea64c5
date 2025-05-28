@@ -1,0 +1,12 @@
+package com.propertyservice.entities;
+
+public class Rooms {
+
+	private Long id;
+	
+	private String roomType;
+	
+	private double basePrice;
+	
+	private Property property;
+}

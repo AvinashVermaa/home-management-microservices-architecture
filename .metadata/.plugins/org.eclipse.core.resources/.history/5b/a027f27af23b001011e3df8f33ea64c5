@@ -1,0 +1,8 @@
+package com.propertyservice.repository;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AreaRepository {
+
+}

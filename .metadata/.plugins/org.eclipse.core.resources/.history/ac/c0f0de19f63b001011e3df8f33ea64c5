@@ -1,0 +1,5 @@
+package com.propertyservice.controller;
+
+public class PropertyController {
+
+}

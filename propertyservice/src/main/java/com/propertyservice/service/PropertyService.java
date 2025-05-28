@@ -1,0 +1,73 @@
+package com.propertyservice.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.propertyservice.dto.PropertyDto;
+import com.propertyservice.dto.RoomsDto;
+import com.propertyservice.entities.Area;
+import com.propertyservice.entities.City;
+import com.propertyservice.entities.Property;
+import com.propertyservice.entities.Rooms;
+import com.propertyservice.entities.State;
+import com.propertyservice.repository.AreaRepository;
+import com.propertyservice.repository.CityRepository;
+import com.propertyservice.repository.PropertyRepository;
+import com.propertyservice.repository.RoomAvailabilityRepository;
+import com.propertyservice.repository.RoomRepository;
+import com.propertyservice.repository.StateRepository;
+
+@Service
+public class PropertyService {
+
+	@Autowired
+	private PropertyRepository propertyRepository;
+	
+	@Autowired
+	private AreaRepository areaRepository;
+	
+	@Autowired
+	private CityRepository cityRepository;
+	
+	@Autowired
+	private StateRepository stateRepository;
+	
+	@Autowired
+	private RoomRepository roomRepository;
+	
+	@Autowired
+	private RoomAvailabilityRepository availabilityRepository;
+	
+	
+	public PropertyDto addProperty(PropertyDto dto,MultipartFile[] files) {
+		
+		Area area = areaRepository.findByName(dto.getArea());
+		City city = cityRepository.findByName(dto.getCity());
+		State state = stateRepository.findByName(dto.getState());
+		
+		Property property = new Property();
+		property.setName(dto.getName());
+		property.setNumberOfBathrooms(dto.getNumberOfBathrooms());
+		property.setNumberOfBeds(dto.getNumberOfBeds());
+	    property.setNumberOfRooms(dto.getNumberOfRooms());
+	    property.setNumberOfGuestAllowed(dto.getNumberOfGuestAllowed());
+	    property.setArea(area);
+	    property.setCity(city);
+	    property.setState(state);
+	    
+	    Property savedProperty = propertyRepository.save(property);
+		
+	    //save rooms:
+	    
+	    for(RoomsDto room : dto.getRooms()) {
+	    	Rooms rooms = new Rooms();
+	    	rooms.setBasePrice(room.getBasePrice());
+	    	rooms.setProperty(savedProperty);
+	    	rooms.setRoomType(room.getRoomType());
+	    	roomRepository.save(rooms);
+	    }
+		
+		return dto;
+	}
+}

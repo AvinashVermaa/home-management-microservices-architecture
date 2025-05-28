@@ -1,0 +1,5 @@
+package com.propertyservice.dto;
+
+public class PropertyDto {
+
+}

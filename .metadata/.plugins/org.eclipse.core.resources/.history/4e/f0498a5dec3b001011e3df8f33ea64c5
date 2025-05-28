@@ -1,0 +1,12 @@
+spring.application.name=propertyservice
+
+server.port=9091
+
+spring.datasource.url=jdbc:mysql://localhost:3306/hmsdb
+spring.datasource.username=root
+spring.datasource.password=test
+spring.jpa.hibernate.ddl-auto=update
+
+#Enable multipart file upload
+spring.servlet.multipart.enabled=true
+

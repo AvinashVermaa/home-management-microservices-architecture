@@ -1,0 +1,12 @@
+package com.propertyservice.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="area")
+public class Area {
+
+	private Long id;
+	private String name;
+}

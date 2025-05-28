@@ -1,0 +1,5 @@
+package com.propertyservice.service;
+
+public class PropertyService {
+
+}
