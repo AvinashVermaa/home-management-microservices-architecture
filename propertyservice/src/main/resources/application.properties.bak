@@ -10,6 +10,6 @@ spring.jpa.hibernate.ddl-auto=update
 #Enable multipart file upload
 spring.servlet.multipart.enabled=true
 
-#Set maximum file size to uploaded
+#Set maximum file size to upload
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=20MB
